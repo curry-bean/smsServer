@@ -17,17 +17,19 @@ app.use(express.json({ limit: '10kb' }));
 
 // Define the route for sending the SMS
 app.post('/send-sms', async (req, res) => {
-  console.log(req.body);
-  const { phoneNumber } = req.body;
+  const { message, phoneNumber } = req.body;
 
-  if (!phoneNumber) {
-    return res.status(404).send("Phone Number is required");
+  if (!message || !phoneNumber) {
+    return res.status(400).json({
+      error: "Message and phoneNumber are required"
+    });
   }
+
   try {
     // Send the message
     const result = await africastalking.SMS.send({
       to: phoneNumber,
-      message: "Hey Welcome to Africastalking"
+      message: message
     });
 
     console.log(result);
@@ -39,9 +41,12 @@ app.post('/send-sms', async (req, res) => {
     });
   } catch (error) {
     console.log("Error", error);
-    res.status(500).send("An error occurred while sending SMS");
+    res.status(500).json({
+      error: "An error occurred while sending SMS"
+    });
   }
 });
+
 
 // Start the server
 app.listen(PORT, () => {
