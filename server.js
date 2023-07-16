@@ -4,8 +4,8 @@ require('dotenv').config();
 
 // Initialize Africa's Talking
 const africastalking = AfricasTalking({
-  apiKey: '70c7315e68633f9e5baeb0704bc20dcb485ac78e68b3d700880b44c31881287c',
-  username: 'africasmsApp'
+  apiKey: 'c0e4503853a570a5c24ae849cb136c9ce5b706770721188f6c511a60d80f7656',
+  username: 'teamofsix'
 });
 
 // Create an instance of the express application
