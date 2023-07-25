@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // Initialize Africa's Talking
 const africastalking = AfricasTalking({
-  apiKey: 'c0e4503853a570a5c24ae849cb136c9ce5b706770721188f6c511a60d80f7656',
+  apiKey: '8a2dab6c16b94184000062ec07b1fc85becf493e6987f74d3c0f11f737bb92fd',
   username: 'teamofsix'
 });
 
@@ -18,7 +18,7 @@ app.use(express.json({ limit: '10kb' }));
 // Define the route for sending the SMS
 app.post('/send-sms', async (req, res) => {
   const { message, phoneNumber } = req.body;
-  
+
   console.log("message Received : "+message);
   console.log("phoneNumber Received is :"+phoneNumber);
 
