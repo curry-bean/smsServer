@@ -18,6 +18,9 @@ app.use(express.json({ limit: '10kb' }));
 // Define the route for sending the SMS
 app.post('/send-sms', async (req, res) => {
   const { message, phoneNumber } = req.body;
+  
+  console.log("message Received : "+message);
+  console.log("phoneNumber Received is :"+phoneNumber);
 
   if (!message || !phoneNumber) {
     return res.status(400).json({
@@ -31,6 +34,9 @@ app.post('/send-sms', async (req, res) => {
       to: phoneNumber,
       message: message
     });
+    console.log("Message :", message);
+    console.log("PhoneNumber: ", phoneNumber);
+    console.log(result);
 
     console.log(result);
     res.status(200).json({
